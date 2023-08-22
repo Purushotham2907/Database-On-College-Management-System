@@ -73,5 +73,9 @@ select van_number from transportation where morning_timings between "07:00:00" a
 >>Display the timings and van number which will go to the place “Jayanagar” ?
 select van_number,morning_timings,evening_timings from transportation where places="jayanagar";
 
-
-
+#For Joins
+I have inserted two more values in students tables to get the left, right, and full join.
+>>INSERT INTO students(fname,lname,gender,degree,course,attendence,percentage,mobile_number,mail_id) VALUES ("suriya","sivakumar","male","ug","btech",76,84,"7775553674","suriya123@gmail.com"),                                                                                ("vikram","kumar","male","pg","mtech",82,79,"8976943331","vikram546@gmail.com");
+Left Join :SELECT CONCAT(fname,lname),s_id  FROM students LEFT JOIN admissions ON students.s_id=admissions.a_id;
+Right Join :SELECT CONCAT(fname,lname),s_id  FROM students RIGHT JOIN admissions ON students.s_id=admissions.a_id;
+Full Join :select * from students right join admissions on students.s_id=admissions.a_id union select * from students left join admissions on students.s_id=admissions.a_id;
