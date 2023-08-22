@@ -1,0 +1,12 @@
+CREATE TABLE admissions(a_id INT,FOREIGN KEY(a_id) REFERENCES students(s_id),s_name VARCHAR(50),mobile_number VARCHAR(90),mail_id VARCHAR(50),city VARCHAR(50) DEFAULT 'Bangalore',state VARCHAR(50) DEFAULT 'Karnataka',course_enrolled VARCHAR(50) ,admission_date DATE,admission_time TIME,entrance_rank INT);
+INSERT INTO admissions(a_id,s_name,mobile_number,mail_id,course_enrolled,admission_date,admission_time,entrance_rank) 
+VALUES (1,"pavan vaccha","8500311211","pavanvaccha@gmail.com","mba","2015-07-11","11:12:10",324),
+	   (2,"purushotham gayam","9870001283","purushotham123@gmail.com","mba","2014-08-12","09:15:55",90),
+       (3,"prem kumar","9098087000","premkumar@gmail.com","bsc","2013-06-10","10:15:40",158),
+       (4,"karthik tirupati ","8709990004","karthik123@gmail.com","mtech","2015-09-09","14:30:55",674),
+       (5,"rahul george","8767819233","rahul111@gmail.com","btech","2014-06-26","15:20:30",1245),
+       (6,"tarak kumar","7655678909","tarakkumar@gmail.com","mca","2013-05-07","16:30:42",256),
+       (7,"pooja devi","7893450908","pooja123@gmail.com","bzc","2016-04-08","12:10:08",512),
+       (8,"hema latha","7655712834","hemalatha1@gmail.com","bcom","2017-08-05","08:10:42",498),
+       (9,"vignesh galla","9993331110","vignesh99@gmail.com","mtech","2016-04-17","13:25:35",775),
+       (10,"amar ganta","7775553331","amar123@gmail.com","btech","2017-09-19","17:05:32",834);
