@@ -1,0 +1,77 @@
+#For Students Table:
+>>To display the full name of the students who’s percentage in the range of 80-90 and having the attendance more than 80%?
+select concat_ws(" ",fname,lname) as "students who have 80-90 percentage and attendance more than 80" from students where (percentage between 80 and 90) and attendence>80 ;
+
+>>Find how many male and female members are there?
+select gender,count(gender) as "No. of Male & Female students" from students group by gender;
+
+>>Display the name who’s names start with “P”?
+select fname from students where fname like "p%";
+
+>>find number of students who took the course MBA ?
+select count(fname) as "No. of students who took MBA COURSE" from students where  course="mba";
+
+#For Teaching Faculty Table:
+>>Display the name who has joined between the years 2019 and 2023?
+select faculty_name,doj from teaching_faculty where doj between "2019-01-01" and "2023-01-01“ ;
+
+>>Display the names and designation who has most working experience?
+select faculty_name,designation from teaching_faculty where experiance in (select max(experiance) from teaching_faculty);
+
+>>Display the salary of assistant professor who belongs to EEE Department?
+select designation,department,salary from teaching_faculty where designation="assistant professor" and department="eee";
+
+>>Find the id of the faculty who’s name is “P.SUBRAMANYACHARY”?
+select fid,find_in_set(faculty_name,"P. SUBRAMANYACHARY") from teaching_faculty;
+
+>>Display the three faculty names, salary and arrange the salary in descending order ?
+select faculty_name,salary from teaching_faculty order by salary desc limit 3;
+
+#For Non-Teaching Faculty table:
+>>Display four names and find the ascii value of names?
+select ascii(lower(name)) as "These are the ascii values of NAMES which is in lowercase" from nonteaching_faculty limit 4;
+
+>>Find the  average salary of each department?
+select department,avg(salary) from nonteaching_faculty where salary<(select avg(salary) from nonteaching_faculty) group by department;
+
+>>Display the names “M.Lakshmi” and “O.VASANTH”?
+select name from nonteaching_faculty where name in ( "O.VASANTH","M.LAKSHMI");
+
+>>Extract the middle of the character of name whose salary is greater than 23000?
+select name,substr(name,char_length(name)/2,1) as "middle of character of NAME who having salary more than 23000" from nonteaching_faculty where salary>23000;
+
+>>Display the admin office designation?
+select designation from NONTEACHING_FACULTY where department="admin office";
+
+#For Departments Tables:
+>>Add column name entrance marks in the department table and insert the random values between 1 to 7000?
+alter table departments add column entrance_rank int;
+
+>>Display the least fee?
+select min(fee) from departments;
+
+>>Display all the table values and give 30% fee concession for the students who got entrance_rank between 1 to 150?
+select degree,fee,entrance_rank, if(entrance_rank between 1 and 150,(30/100*fee),fee) as "30% concession is given for the students who's rank between 1 to 150" from departments;
+
+#For Job Openings Table:
+>>display the qualification for "ASSOCIATE PROFESSOR“?
+select qualification from job_openings where position="associate professor";
+
+>>How is experience is needed for the position of  "DIRECTOR/DEAN/PRINIPAL“?
+select experiance as "DIRECTOR/DEAN/PRINIPAL Experiance" from job_openings  where position="DIRECTOR/DEAN/PRINIPAL" ;
+
+>>Display all the values and arrange the experience in descending order ?
+select * from job_openings order by experiance desc;
+
+#For Transportation Table:
+>>What are the morning and evening timings for the “van number 24” ?
+select morning_timings,evening_timings from transportation where van_number=24;
+
+>>Display the van numbers which runs between 7AM and 8AM ?
+select van_number from transportation where morning_timings between "07:00:00" and "08:00:00";
+
+>>Display the timings and van number which will go to the place “Jayanagar” ?
+select van_number,morning_timings,evening_timings from transportation where places="jayanagar";
+
+
+
